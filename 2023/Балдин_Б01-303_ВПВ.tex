@@ -2,7 +2,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
-\usepackage{graphicx, float, hyperref}
+\usepackage{amsmath, graphicx, float, hyperref}
 
 \begin{document}
     \begin{titlepage}
@@ -71,6 +71,27 @@
         \url{https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/
         Lagrange_points2.svg/1920px-Lagrange_points2.svg.png}}
     \end{figure}
+
+    \section{Задача 3-х тел}
+    Для начала проведем краткое рассмотрение движения 3-х тел, связанных между
+    собой гравитационными взаимодействиями. Это может быть описано в общем
+    случае следующими дифференциальными уравнениями:
+    \begin{equation}
+        \begin{cases}
+            \ddot{\vec{r_1}} = -Gm_2\frac{\vec{r_1} - \vec{r_2}}
+            {\lvert \vec{r_1} - \vec{r_2} \rvert} -
+            Gm_3\frac{\vec{r_1} - \vec{r_3}}{\lvert \vec{r_1} - 
+            \vec{r_3} \rvert}\\
+            \ddot{\vec{r_2}} = -Gm_2\frac{\vec{r_2} - \vec{r_3}}
+            {\lvert \vec{r_2} - \vec{r_3} \rvert} -
+            Gm_3\frac{\vec{r_2} - \vec{r_1}}{\lvert \vec{r_2} - 
+            \vec{r_1} \rvert}\\
+            \ddot{\vec{r_3}} = -Gm_2\frac{\vec{r_3} - \vec{r_1}}
+            {\lvert \vec{r_3} - \vec{r_1} \rvert} -
+            Gm_3\frac{\vec{r_3} - \vec{r_2}}{\lvert \vec{r_3} - 
+            \vec{r_2} \rvert}\\
+        \end{cases}\,.
+    \end{equation}
 
     \section{Вычисление точек Лагранжа}
     Все точки Лагранжа находятся в плоскости орбит массивных тел. Их можно
