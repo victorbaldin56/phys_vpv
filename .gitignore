@@ -149,3 +149,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Build folder
+build_/
+
+# VS Code Config
+.vscode/

@@ -7,14 +7,6 @@
 #ifndef SIMULATOR_H_
 #define SIMULATOR_H_
 
-#include <assert.h>
-#include <getopt.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-#include <SFML/Graphics.hpp>
-
 /**
  * @brief
  */
