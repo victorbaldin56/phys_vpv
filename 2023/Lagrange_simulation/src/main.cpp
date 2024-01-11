@@ -4,32 +4,29 @@
  * 
  * @copyright Copyright (C) Victor Baldin, 2024.
  */
-#include <assert.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <SFML/Graphics.hpp>
-
 #include "simulator.h"
 
-static void draw_test_window()
-{
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
-    sf::RectangleShape rect;
-    sf::View view;
-    view.setCenter(0, -300);
-    window.setView(view);
-    rect.setFillColor(sf::Color::Green);
-    rect.setPosition(sf::Vector2f(0, 600));
-    while (window.isOpen()) { 
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-    }
-}
+// static void draw_test_window()
+// {
+//     sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
+//     sf::RectangleShape rect;
+//     sf::View view;
+//     view.setCenter(0, -300);
+//     window.setView(view);
+//     rect.setFillColor(sf::Color::Green);
+//     rect.setPosition(sf::Vector2f(0, 600));
+//     while (window.isOpen()) { 
+//         sf::Event event;
+//         while (window.pollEvent(event)) {
+//             if (event.type == sf::Event::Closed)
+//                 window.close();
+//         }
+//     }
+// }
 
 int main(int argc, char* argv[])
 {
@@ -58,6 +55,6 @@ int main(int argc, char* argv[])
         }
     }
     
-    draw_test_window();
+//    draw_test_window();
     return EXIT_SUCCESS;
 }
