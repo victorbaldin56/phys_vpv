@@ -2,7 +2,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
-\usepackage{amsmath, graphicx, float, hyperref, pgf}
+\usepackage{amsmath, graphicx, float, hyperref, pgf, cite}
 
 \DeclareMathOperator{\sign}{sign}
 
@@ -12,6 +12,7 @@
     colorlinks=true,
     linkcolor=blue,
     urlcolor=cyan,
+    citecolor=magenta,
 }
 
 \begin{document}
@@ -80,7 +81,7 @@
     \section{Точки Лагранжа}
     \par Для начала проведем краткое рассмотрение движения 3-х тел, связанных между
     собой гравитационными взаимодействиями. Это может быть описано в общем
-    случае следующими дифференциальными уравнениями:
+    случае следующими дифференциальными уравнениями \cite{mit2008}:
 
     \begin{equation}
         \begin{cases}
@@ -118,7 +119,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[scale = 2]{two-bodies.png}
-        \caption{Рассматриваемый частный случай задачи трех тел}
+        \caption{Рассматриваемый частный случай задачи трех тел \cite{nasagov}}
     \end{figure}
 
     Понятно, что теперь мы можем написать уравнение для ускорения тела $m$, 
@@ -131,8 +132,8 @@
         \label{acceleration}
     \end{equation}
 
-    \par Теперь из третьего закона Кеплера найдем угловую скорость вращения системы
-    $M_1$ и $M_2$:
+    \par Теперь из третьего закона Кеплера \cite{sivykhin} найдем угловую 
+    скорость вращения системы $M_1$ и $M_2$:
 
     \begin{equation}
         \Omega^2 R^3 = G(M_1 + M_2), 
@@ -207,23 +208,20 @@
     \par Заметим, что пара $(s_0, s_1)$ может принимать одно из значений:
     $(-1, 1)$ (между $M_1$ и $M_2$), $(1, 1)$ (за $M_2$) и $(-1, -1)$ (за $M_1$). 
     Так как уравнение \ref{fifth} пятой степени,
-    для него по теореме Абеля -- Руффини не существует общего аналитического решения
+    для него по теореме Абеля -- Руффини \cite{alexeev} не существует общего аналитического решения
     через $\alpha$. 
 
-    \par Поэтому мы будем решать получившиеся уравнения численными методами.
-    
-    \begin{thebibliography}{10}
-        \bibitem{sivukhin}
-        Д. В. Сивухин (2005) \emph{Общий курс физики. Том 1: Механика}
-        
-        \bibitem{enwikipedia}
-        \url{https://en.wikipedia.org/wiki/Lagrange_point}
+    \par Поэтому мы будем решать получившиеся уравнения численными методами. Для
+    этого напишем несложную программу на языке C c использованием библиотеки 
+    GSL (GNU Scientific Libarary, доступна для скачивания 
+    с \url{https://www.gnu.org/software/gsl}, распространяется под лицензией 
+    GNU GPL, разрешающей свободное использование в
+    некоммерческих целях, текст лицензии доступен по адресу 
+    \url{https://www.gnu.org/licenses/gpl-3.0.txt}). GSL предоставляет
+    имплементацию численного метода для решения полиномиального уравнения
+    общего вида \cite{gsl}.
 
-        \bibitem{mit18}
-        \url{https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/resources/mit16_07f09_lec18/}
-
-        \bibitem{nasa}
-        \url{https://wmap.gsfc.nasa.gov/media/ContentMedia/lagrange.pdf}
-    \end{thebibliography}
+    \bibliography{references}
+    \bibliographystyle{plain}
 
 \end{document}
