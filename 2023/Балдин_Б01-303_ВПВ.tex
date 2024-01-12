@@ -5,6 +5,7 @@
 \usepackage{amsmath, graphicx, float, hyperref, pgf, cite}
 
 \DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\MyIm}{Im}
 
 \graphicspath{{./pictures/}}
 
@@ -76,6 +77,7 @@
         \textit{Источник:}
         \url{https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/
         Lagrange_points2.svg/1920px-Lagrange_points2.svg.png}}
+        \label{points}
     \end{figure}
 
     \section{Точки Лагранжа}
@@ -219,7 +221,27 @@
     некоммерческих целях, текст лицензии доступен по адресу 
     \url{https://www.gnu.org/licenses/gpl-3.0.txt}). GSL предоставляет
     имплементацию численного метода для решения полиномиального уравнения
-    общего вида \cite{gsl}.
+    общего вида \cite{gsl}. Исходный код программы доступен в репозитории 
+    \url{https://github.com/victorbaldin56/VPV/tree/main/2023/lagrange_solver}.
+    Для сборки из исходного кода 
+    необходимы установленные компилятор языка C/C++, система сборки GNU Make 
+    и библиотека GSL.
+
+    \par Меняя $\alpha$ в промежутке $[0, 1)$ с шагом $10^{-3}$ и решая уравнение
+    \ref{fifth} для каждого значения, получаем зависимость положений точек
+    $L_1$, $L_2$ и $L_3$ от $\alpha$. При этом $L_1$ соотвествует паре $(s_0, s_1) =
+    (-1, 1)$, $L_2$ -- $(1, 1)$, $L_3$ -- $(-1, -1)$, как показано на рисунке 
+    \ref{points}. Полученный набор данных представлен в сгенерированной программой
+    таблице \url{https://github.com/victorbaldin56/VPV/blob/main/2023/lagrange_solver/output.csv}.
+    В таблице представлены корни уравнения, соответствующие $L_1$, $L_2$ и $L_3$.
+    
+    \par При этом численными методами мы убеждаемся в том, что таких
+    точек действительно лишь 3. Это позволяет проверить процедура отбора
+    корней, при которой мы выбираем лишь такие корни $u$, что $\MyIm u = 0$ и 
+    $(\sign(u), \sign(u + 1)) = (s_0, s_1)$.
+
+    \par Построим график $u_1(\alpha)$, где $u_1$ -- корень, соответствующий положению
+    $L_1$.
 
     \bibliography{references}
     \bibliographystyle{plain}
