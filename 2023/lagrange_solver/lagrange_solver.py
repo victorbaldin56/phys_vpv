@@ -40,26 +40,50 @@ def lagrange_solve(alpha):
 # файл. 
 print('alpha,L1,L2,L3')
 
-alpha = 0.001
-i = 0
+low = [(i + 1) / 10000 for i in range(100)]
+alpha = low + [i / 1000 for i in range(10, 1000)]
+
 roots = []
-while (alpha < 1.0):
-    roots.append(lagrange_solve(alpha))
-    print('{0:.3f},{1},{2},{3}'.format(alpha, roots[i][0], roots[i][1], 
+for i in range(alpha.__len__()):
+    roots.append(lagrange_solve(alpha[i]))
+    print('{0:.3f},{1},{2},{3}'.format(alpha[i], roots[i][0], roots[i][1], 
                                        roots[i][2]))
-    alpha += 0.001
-    i += 1
 
+colors = ['blue', 'red', 'green']
 # Графики
-alpha = [(1 + i) / 1000 for i in range(roots.__len__())]
-
 plt.figure()
 for j in range(3):
-    plt.scatter(alpha, [roots[i][j] for i in range(roots.__len__())], s=0.1,
-                label='$L_{0}$'.format(j + 1)) 
+    plt.scatter(alpha, [roots[i][j] for i in range(roots.__len__())], s=0.5,
+                label='$L_{0}$'.format(j + 1), color=colors[j]) 
 
 plt.xlabel('$\\alpha$')
 plt.ylabel('$x/R$')
 plt.grid() 
-plt.legend(markerscale=10)
+plt.legend(markerscale=2)
 plt.savefig('plots/all.pgf')
+
+# Графики с аппроксимациями.
+
+x = np.linspace(0.0, 1.0, 200)
+fig, axs = plt.subplots(3)
+for j in range(3):
+    axs[j].scatter(alpha, [roots[i][j] for i in range(roots.__len__())], s=0.5, 
+                   color=colors[j])
+    axs[j].grid()
+    axs[j].set_title('$L_{0}$'.format(j + 1))
+
+axs[0].plot(x, 1 - (x / 3)**(1 / 3), color='orange', 
+            label='$\\frac{{x}}{{R}}=1-\\left(\\frac{{\\alpha}}{{3}}\\right)^{{1/3}}$')
+axs[1].plot(x, 1 + (x / 3)**(1 / 3), color='orange', 
+            label='$\\frac{{x}}{{R}}=1+\\left(\\frac{{\\alpha}}{{3}}\\right)^{{1/3}}$')
+axs[2].plot(x, -1 - (5 / 12) * x, color='orange', 
+            label='$\\frac{{x}}{{R}}=-\\left(1+\\frac{{5}}{{12}}\\alpha\\right)$')
+
+for j in range(3):
+    axs[j].legend()
+
+plt.tight_layout()
+
+plt.xlabel('$\\alpha$')
+plt.ylabel('$x/R')
+plt.savefig('plots/subplots.pgf')
