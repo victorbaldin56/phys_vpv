@@ -36,17 +36,12 @@ def lagrange_solve(alpha):
         roots[i] = find_real_root(np.roots(coeff[i]), rmin[i], rmax[i]) + 1.0 - alpha
     return roots
 
-# Вычисляем положения точек Лагранжа с шагом 0.001, вывод перенаправляем в 
-# файл. 
-print('alpha,L1,L2,L3')
-
+# Вычисляем положения точек Лагранжа с шагом 0.001. 
 alpha = [(i + 1) / 10000 for i in range(100)] + [i / 1000 for i in range(10, 1000)]
 
 roots = []
 for i in range(alpha.__len__()):
     roots.append(lagrange_solve(alpha[i]))
-    print('{0:.3f},{1},{2},{3}'.format(alpha[i], roots[i][0], roots[i][1], 
-                                       roots[i][2]))
 
 colors = ['blue', 'red', 'green']
 # Графики
@@ -95,11 +90,11 @@ NUM_VERY_LOW_VALUES = 200
 
 errors = [[]] * 3
 errors[0] = [abs((roots[i][0] - 1 + (alpha[i] / 3)**(1 / 3)) / roots[i][0]) 
-                   for i in range(NUM_LOW_VALUES)]
+                   for i in range(roots.__len__())]
 errors[1] = [abs((roots[i][1] - 1 - (alpha[i] / 3)**(1 / 3)) / roots[i][1])
-                       for i in range(NUM_LOW_VALUES)]
+                       for i in range(roots.__len__())]
 errors[2] = [abs((roots[i][2] + 1 + 5 / 12 * alpha[i]) / roots[i][2])
-                       for i in range(NUM_LOW_VALUES)]
+                       for i in range(roots.__len__())]
 
 for j in range(3):
     axs[j].scatter(alpha[:NUM_VERY_LOW_VALUES], errors[j][:NUM_VERY_LOW_VALUES], s=1.0)
@@ -114,10 +109,19 @@ plt.savefig('plots/errors.pgf')
 
 plt.figure()
 for j in range(3):
-    plt.scatter(alpha[:NUM_LOW_VALUES], errors[j], s=0.5, label='$L_{0}'.format(j + 1))
+    plt.scatter(alpha[:NUM_LOW_VALUES], errors[j][:NUM_LOW_VALUES], 
+                s=0.5, label='$L_{0}'.format(j + 1))
 
 plt.grid()
 plt.xlabel('$\\alpha$')
 plt.ylabel('$\\varepsilon$')
 plt.legend(markerscale=2)
 plt.savefig('plots/errors_all.pgf')
+
+# Пишем в таблицу.
+print('alpha,L1,L2,L3,e1,e2,e3')
+
+for j in range(roots.__len__()):
+    print('{0},{1},{2},{3},{4},{5},{6}'.format(alpha[j], 
+                                               roots[j][0], roots[j][1], roots[j][2],
+                                               errors[0][j], errors[1][j], errors[2][j]))
