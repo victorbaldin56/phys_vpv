@@ -13,7 +13,7 @@
     colorlinks=true,
     linkcolor=red,
     urlcolor=blue,
-    citecolor=purple,
+    citecolor=orange,
 }
 
 \begin{document}
@@ -222,10 +222,22 @@
     полиномиальных уравнений произвольных порядков для языка Python3.
     При помощи данного несложного 
     \href{https://github.com/victorbaldin56/VPV/blob/main/2023/lagrange_solver/lagrange_solver.py}
-    {скрипта} получим набор данных
+    {скрипта} получим набор данных в виде таблицы, доступной по
+    \href{https://github.com/victorbaldin56/VPV/blob/main/2023/lagrange_solver/lagrange_solver_data.csv}
+    {ссылке}.
 
-    \par Построим график $u_1(\alpha)$, где $u_1$ -- корень, соответствующий положению
-    $L_1$.
+    \par Построим графики $x/R(\alpha)$ для $L_1, L_2, L_3$ (см. рисунок \ref{sss}).
+
+    \par Некоторый интерес так же представляют аппроксимации полученных 
+    заисимостей для $\alpha \ll 1$.
+    
+    \begin{figure}[H]
+        \centering
+        \input{lagrange_solver/plots/all.pgf}
+        \caption{Графики положения точек первых трех точек Лагранжа в зависимости от 
+        $\alpha$}
+        \label{sss}
+    \end{figure}
 
     \bibliography{references}
     \bibliographystyle{plain}

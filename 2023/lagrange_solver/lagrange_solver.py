@@ -55,7 +55,11 @@ alpha = [(1 + i) / 1000 for i in range(roots.__len__())]
 
 plt.figure()
 for j in range(3):
-    plt.scatter(alpha, [roots[i][j] for i in range(roots.__len__())]) 
+    plt.scatter(alpha, [roots[i][j] for i in range(roots.__len__())], s=0.1,
+                label='$L_{0}$'.format(j + 1)) 
 
+plt.xlabel('$\\alpha$')
+plt.ylabel('$x/R$')
 plt.grid() 
+plt.legend(markerscale=10)
 plt.savefig('plots/all.pgf')
