@@ -2,7 +2,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
-\usepackage{amsmath, graphicx, float, hyperref, pgf, cite}
+\usepackage{amsmath, graphicx, float, hyperref, cite, pgfplots}
 
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\MyIm}{Im}
@@ -11,9 +11,9 @@
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    urlcolor=cyan,
-    citecolor=magenta,
+    linkcolor=red,
+    urlcolor=blue,
+    citecolor=purple,
 }
 
 \begin{document}
@@ -202,8 +202,8 @@
     при раскрытии знаменателей). После преобразований получим следующее уравнение:
 
     \begin{equation}
-        u^5 + (3 - \alpha)u^4 + (3 - 2\alpha)u^3 - ((1-\alpha)(1 - s_1) - 
-        \alpha s_0)u^2 - \alpha s_0 = 0
+        u^5 + (3 - \alpha)u^4 + (3 - 2\alpha)u^3 + ((1-\alpha)(1 - s_1) - 
+        \alpha s_0)u^2 - 2\alpha s_0 u - \alpha s_0 = 0
         \label{fifth}
     \end{equation}
 
@@ -213,8 +213,17 @@
     для него по теореме Абеля -- Руффини \cite{alexeev} не существует общего аналитического решения
     через $\alpha$. 
 
-    \par Поэтому мы будем решать получившиеся уравнения численными методами.     
-    
+    \par Поэтому мы будем решать получившиеся уравнения численными методами. Для
+    этого воспользуемся средствами библиотеки \href{https://numpy.org}{NumPy},
+    предоставляющей программную    
+    \href{https://numpy.org/doc/stable/reference/generated/numpy.roots.html#r01a8f58ef25b-1}
+    {имплементацию}
+    численного метода для решения
+    полиномиальных уравнений произвольных порядков для языка Python3.
+    При помощи данного несложного 
+    \href{https://github.com/victorbaldin56/VPV/blob/main/2023/lagrange_solver/lagrange_solver.py}
+    {скрипта} получим набор данных
+
     \par Построим график $u_1(\alpha)$, где $u_1$ -- корень, соответствующий положению
     $L_1$.
 
