@@ -339,7 +339,7 @@
         \label{parallel}
     \end{equation}
 
-    Из \ref{perp} и \ref{parallel} получаем 2 точки, симметричные относительно
+    Из \ref{perp} и \ref{parallel} получаем 2 точки, симметричные относительно 
     оси $x$:
 
     \begin{eqnarray}
@@ -348,7 +348,145 @@
     \end{eqnarray}
 
     \section{Анализ устойчивости равновесия}
+    Следующей нашей целью будет исследование вида равновесия в точках Лагранжа.
+    Пусть $\delta x$, $\delta y$ -- малые отклонения от положения равновесия по 
+    соответствующим осям, $\delta v_x$, $\delta v_y$ -- приобретенные проекции
+    скорости на эти оси.
+
+    \par Введем вектор состояния для тела. Нетрудно убедиться в справедливости
+    следующего равенства \cite{nasagov}:
+
+    \begin{equation}
+        \frac{d}{dt}
+        \begin{pmatrix}
+            \delta x\\
+            \delta y\\
+            \delta v_x\\
+            \delta v_y\\
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1\\
+            \frac{\partial \dot{v}_x}{\partial x} & \frac{\partial \dot{v}_x}{\partial y} & 0 & 2\Omega\\
+            \frac{\partial \dot{v}_y}{\partial x} & \frac{\partial \dot{v}_y}{\partial x} & -2\Omega & 0\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            \delta x\\
+            \delta y\\
+            \delta v_x\\
+            \delta v_y
+        \end{pmatrix}
+        \label{magic_matrix}
+    \end{equation}
+
+    \subsection{Устойчивость L1 и L2}
+    Точки $L_1$ и $L_2$ могут быть использованы для размещения космических аппаратов-обсерваторий
+    в целях наблюдения за Cолнцем. В частности, в точке $L_1$ размещалась станция SOHO \cite{nasagov}.
+    Поэтому исследование равновесия в этих точках является важной задачей.
     
+    \par Для того, чтобы проследить изменения вектора состояния, необходимо найти 
+    коэффициенты матрицы в выражении \ref{magic_matrix}. Для этого вычислим производные:
+
+    \begin{equation}
+        \begin{split}
+        \frac{\partial}{\partial x}\left(\Omega^2\left(x - \frac{\beta (x + \alpha R)R^3}
+            {((x + \alpha R)^2 + y^2)^{3/2}} - 
+            \frac{\alpha (x - \beta R)R^3}{((x - \beta R)^2 + y^2)^{3/2}}\right)\right) = \\
+        =\Omega^2\left(1 - \frac{\beta R^3(y^2 - 2(x - \alpha R)^2)}{((x + \alpha R)^2 + y^2)^{5/2}} -
+        \frac{\alpha R^3(y^2 - 2(x - \beta R)^2)}{((x - \beta R)^2 + y^2)^{5/2}}\right)
+        \end{split}
+    \end{equation}
+
+    Для $L_1$ и $L_2$ получим:
+    \begin{equation}
+        \frac{\partial \dot{v}_x}{\partial x} = \mp 9\Omega^2,\ 
+        \frac{\partial \dot{v}_y}{\partial y} = \pm 3\Omega^2,\
+        \frac{\partial \dot{v}_x}{\partial y} = \frac{\partial \dot{v}_y}{\partial x} = 0.
+    \end{equation}
+
+    Вычислим характерное значение (скаляр, умножению которого на характерный вектор
+    эквивалентно умножение на матрицу со следом $\tau$ и определителем $\Delta$):
+    
+    \begin{equation}
+        \lambda_{\pm} = \frac{\tau \pm \sqrt{\tau^2 - 4\Delta}}{2} = \pm \Omega\sqrt{1 + 2\sqrt{7}}
+    \end{equation}
+
+    Это значит, что уравнение \ref{magic_matrix} эквивалетно уравнению 
+    
+    \begin{equation}
+        \frac{d\vec{X}}{dt} = \lambda_{+}\vec{X},
+        \label{exp}
+    \end{equation}
+
+    где $\vec{X}$ -- введенный нами ранее характеристический вектор тела. Поскольку 
+    $\lambda_{\pm}$ действительны, уравнение \ref{exp} дает экспонененциально решение
+
+    \begin{equation}
+        \vec{X}(t) = \vec{X}(0)e^{\lambda_{+}t},
+    \end{equation}
+
+    То есть все компоненты вектора, в том числе и $\delta x$ и $\delta y$, будут нарастать
+    по этой зависимости. Значит, $L_1$ и $L_2$ являются точками \textit{неустойчивого}
+    равновесия.
+    Характерное время отдаления от точки Лагранжа в этом случае составит
+
+    \begin{equation}
+        \tau = \frac{1}{\lambda_{+}} \approx \frac{2}{5\Omega}
+    \end{equation}
+
+    Для системы Земля -- Солнце $\tau \approx 23$ дня. Это значит, что для аппарата, находящегося
+    в $L_1$ или $L_2$, оптимально корректировать траекторию с помощью двигателей раз в этот
+    промежуток времени.
+
+    \subsection{Устойчивость L3}
+    На данный момент научного применения этой точке пока не нашли, так как она расположена
+    за Солнцем. Однако в свое время существовали фантастические теории \cite{nasabrief}, что
+    в $L_3$ находится некая скрытая планета X. К сожалению, точка $L_3$, как и предыдущии
+    две, экспоненциально неустойчива:
+
+    \begin{equation}
+        \frac{\partial \dot{v}_x}{\partial x} = - 3\Omega^2,\ 
+        \frac{\partial \dot{v}_y}{\partial y} = \frac{7M_2}{8M_1}\Omega^2,\
+        \frac{\partial \dot{v}_x}{\partial y} = \frac{\partial \dot{v}_y}{\partial x} = 0. 
+    \end{equation}
+
+    Собственное значение:
+    
+    \begin{equation}
+        \lambda = \Omega \sqrt{\frac{3M_1}{8M_2}}
+    \end{equation}
+
+    Следовательно, планета не успела бы даже сформироваться на такой орбите, характерное
+    время $\tau = 150$ лет. Однако стоит отметить, что $L_3$ существенно <<стабильнее>>
+    $L_1$ и $L_2$.
+
+    \subsection{Устойчивость L4 и L5}
+    Эти точки отличаются от предыдущих, поскольку устойчивость равновесия в них
+    обеспечивает сила Кориолиса. Аналогично:
+
+    \begin{equation}
+        \frac{\partial \dot{v}_x}{\partial x} = \frac{3}{4}\Omega^2,\ 
+        \frac{\partial \dot{v}_y}{\partial y} = \frac{9}{4}\Omega^2,\
+        \frac{\partial \dot{v}_x}{\partial y} = \frac{\partial \dot{v}_y}{\partial x} = 
+        \frac{3\sqrt{3}}{4}k\Omega^2, 
+    \end{equation}
+
+    где $k = (M_1 - M_2)/(M_1 + M_2)$.
+
+    \begin{equation}
+        \lambda_{\pm} = \pm i\frac{\Omega}{2}\sqrt{2 - \sqrt{27k^2 - 23}}
+        \label{imroots}
+    \end{equation}
+
+    Точка $L_4$ будет точкой устойчивого равновесия, если действительная часть 
+    корней \ref{imroots} нулевая. В этом случае имеем комплексную экспоненту,
+    которая эквивалента тригонометрическим функциям, а значит, ограничена. Это
+    достигается при $k \geq \sqrt{23/27}$ или 
+
+    \begin{equation}
+        M_1 \geq 25M_2\left(\frac{1 + \sqrt{1 - 4/625}}{2}\right)
+    \end{equation}
 
     \bibliography{references}
     \bibliographystyle{plain}
