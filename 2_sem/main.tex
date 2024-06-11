@@ -290,50 +290,91 @@
             \item Убедимся, что перед началом эксперимента установка находится под вакуумом. Кран $K_1$ открыт, $K_2$ — закрыт, $K_3$— открыт.
             \item Запустим воздух в установку, плавно открывая кран $K_2$, включим в сеть цифровые мультиметры. Установите амперметр в режим
             измерения постоянного тока, а вольтметр — постоянного напряжения.
-            \item Изменяя напряжение, снимем нагрузочную кривую $R(Q)$.
-
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{graphs/QR.pdf}
-                \caption{Нагрузочная кривая при $P = P_A$}
-            \end{figure}
+            \item Изменяя напряжение, снимем нагрузочную кривую $R(Q)$. Результаты представлены в
+            таблице
 
             \item Изменяя давление вакуумным насосом, снимем для каждого давления
             зависимость $T(Q)$.
 
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{graphs/QT_lowpress.pdf}
-                \caption{Зависимость $T(Q)$ при низких давлениях}
-            \end{figure}
-
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{graphs/QT_highpress.pdf}
-                \caption{Зависимость $T(Q)$ при высоких давлениях}
-            \end{figure}
 
             \item Найдем угловые коэффициенты этих прямых $K$ для каждого давления
             и таким образом получим зависимость $K(P)$. Построим ее график в логарифмическом масштабе
             по оси абсцисс:
 
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{graphs/KP.pdf}
-                \caption{График $K(P)$}
-            \end{figure}
-
             \item На графике действительно можно видеть область с обратно-пропорциональной зависимостью и
             область приблизительно постоянного $K$. Построим график в координатах $K(1/P)$.
 
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{graphs/KP_lin.pdf}
-                \caption{График $K(1/P)$}
-            \end{figure}
-
         \end{enumerate}
     \section{Вывод}
+    Вывод.
+
+    \section{Приложение}
+    \begin{table}[h]
+        \centering
+        \caption{$P = P_A$}
+        \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+            $U$, В &  $I$, мА &     $R$, Ом & $\Delta R$, Ом &     $Q$, мкВт & $\Delta Q$, мВт \\ \hline
+        0.121 & 10.636 & 11.38 &           0.09 &  1.29 &            0.01 \\ \hline
+        0.177 & 15.605 & 11.34 &           0.06 &  2.76 &            0.02 \\ \hline
+        0.291 & 25.548 & 11.39 &           0.04 &  7.43 &            0.03 \\ \hline
+        0.334 & 29.270 & 11.41 &           0.03 &  9.78 &            0.03 \\ \hline
+        0.391 & 34.266 & 11.41 &           0.03 & 13.40 &            0.03 \\ \hline
+        0.473 & 41.300 & 11.45 &           0.02 & 19.53 &            0.04 \\ \hline
+        0.598 & 51.935 & 11.51 &           0.02 & 31.06 &            0.05 \\ \hline
+        0.813 & 69.731 & 11.66 &           0.01 & 56.69 &            0.07 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{graphs/QR.pdf}
+        \caption{Нагрузочная кривая при $P = P_A$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{graphs/QT_lowpress.pdf}
+        \caption{Зависимость $T(Q)$ при низких давлениях}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{graphs/QT_highpress.pdf}
+        \caption{Зависимость $T(Q)$ при высоких давлениях}
+    \end{figure}
+
+    \begin{table}[H]
+    \centering
+    \caption{Зависимость $K(P)$}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    $P$, Па &  $K$, К/Вт &  $T(0)$, \textdegree C \\ \hline
+    69 &    228 &                 33.7 \\ \hline
+    83 &    212 &                 33.6 \\ \hline
+    103 &    201 &                 33.9 \\ \hline
+    136 &    186 &                 33.7 \\ \hline
+    202 &    172 &                 34.1 \\ \hline
+    386 &    158 &                 33.4 \\ \hline
+    4500 &    165 &                 34.2 \\ \hline
+    5500 &    160 &                 34.1 \\ \hline
+    8500 &    164 &                 33.8 \\ \hline
+    15500 &    153 &                 33.9 \\ \hline
+    \end{tabular}
+    \end{table}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{graphs/KP.pdf}
+        \caption{График $K(P)$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{graphs/KP_lin.pdf}
+        \caption{График $K(1/P)$}
+    \end{figure}
+
 
 \newpage
 %\section{Приложение 1}
