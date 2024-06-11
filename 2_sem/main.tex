@@ -290,14 +290,53 @@
             \item Убедимся, что перед началом эксперимента установка находится под вакуумом. Кран $K_1$ открыт, $K_2$ — закрыт, $K_3$— открыт.
             \item Запустим воздух в установку, плавно открывая кран $K_2$, включим в сеть цифровые мультиметры. Установите амперметр в режим
             измерения постоянного тока, а вольтметр — постоянного напряжения.
-            \item
+            \item Изменяя напряжение, снимем нагрузочную кривую $R(Q)$.
 
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{graphs/QR.pdf}
+                \caption{Нагрузочная кривая при $P = P_A$}
+            \end{figure}
+
+            \item Изменяя давление вакуумным насосом, снимем для каждого давления
+            зависимость $T(Q)$.
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{graphs/QT_lowpress.pdf}
+                \caption{Зависимость $T(Q)$ при низких давлениях}
+            \end{figure}
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{graphs/QT_highpress.pdf}
+                \caption{Зависимость $T(Q)$ при высоких давлениях}
+            \end{figure}
+
+            \item Найдем угловые коэффициенты этих прямых $K$ для каждого давления
+            и таким образом получим зависимость $K(P)$. Построим ее график в логарифмическом масштабе
+            по оси абсцисс:
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{graphs/KP.pdf}
+                \caption{График $K(P)$}
+            \end{figure}
+
+            \item На графике действительно можно видеть область с обратно-пропорциональной зависимостью и
+            область приблизительно постоянного $K$. Построим график в координатах $K(1/P)$.
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{graphs/KP_lin.pdf}
+                \caption{График $K(1/P)$}
+            \end{figure}
 
         \end{enumerate}
     \section{Вывод}
 
 \newpage
-\section{Приложение 1}
-\input{include.tex}
+%\section{Приложение 1}
+%\input{include.tex}
 
 \end{document}
